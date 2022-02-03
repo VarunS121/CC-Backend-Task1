@@ -8,7 +8,7 @@ football_data = json.load(urlopen(url))
 
 tier_choice = input('Please enter the tier you want to extract (1 to 4 only): ')
 
-with open("Football-Competitions.csv", 'w', newline='') as fil:
+with open("Football-Competitions.csv", 'w', newline='', encoding='utf-8') as fil:
     fieldNames = ['Id', 'Name', 'Area/Country', 'Available Seasons', 'Tier']
     filewriter = csv.DictWriter(fil, fieldnames=fieldNames)
 
@@ -28,3 +28,4 @@ with open("Football-Competitions.csv", 'w', newline='') as fil:
                 filewriter.writerow({'Id': comp['id'], 'Name': comp['name'], 'Area/Country': comp['area']['name'], 'Available Seasons': comp['numberOfAvailableSeasons'], 'Tier': comp['plan']})
         else:
             print('ERROR!! There are only FOUR TIERS available.')
+            break
